@@ -1,0 +1,27 @@
+{% extends 'base.html' %}
+
+
+{% block title %}
+{{ title }}
+{% endblock %}
+
+
+{% block content %}
+<h1>New Questions</h1>
+
+{% for el in questions %}
+<div class="row question">
+    <div class="col-3">
+        <img src="../../static/img/css_ava.jpg" alt="" class="question-image">
+    </div>
+    <div class="col-9">
+        <div class="question-title"><a href="">{{ el.title }}</a></div>
+        <div class="question-text">{{ el.text }}
+        </div>
+    </div>
+</div>
+{% endfor %}
+
+{% endblock %}
+
+

@@ -1,0 +1,55 @@
+{% extends 'main/base.html' %}
+
+
+{% block title %}
+Profile
+{% endblock %}
+
+{% block content %}
+<h2>Settings: *User name*</h2>
+<div class="row" style="margin-top: 10px; border-radius: 6px; padding: 20px; margin-left: 10px">
+    <div class="col-6">
+        <p>Login: </p>
+    </div>
+    <div class="col-6">
+        <div class="mb-3">
+            <input type="Login" class="form-control" id="exampleInputLogin" aria-describedby="emailHelp"
+                   placeholder="Login" style="border: 2px solid #000000; padding: 1px;">
+        </div>
+    </div>
+</div>
+<div class="row" style="margin-top: 10px; border-radius: 6px; padding: 20px; margin-left: 10px">
+    <div class="col-6">
+        <p>Email: </p>
+    </div>
+    <div class="col-6">
+        <div class="mb-3">
+            <input type="email" class="form-control" id="exampleInputEmail" aria-describedby="emailHelp"
+                   placeholder="Email" style="border: 2px solid #000000; padding: 1px;">
+        </div>
+    </div>
+</div>
+<div class="row" style="margin-top: 10px; border-radius: 6px; padding: 20px; margin-left: 10px">
+    <div class="col-6">
+        <p>NickName: </p>
+    </div>
+    <div class="col-6">
+        <div class="mb-3">
+            <input type="email" class="form-control" id="exampleInputNickName" aria-describedby="emailHelp"
+                   placeholder="NickName" style="border: 2px solid #000000; padding: 1px;">
+        </div>
+    </div>
+</div>
+<div class="row" style="margin-top: 10px; border-radius: 6px; padding: 20px; margin-left: 10px">
+    <div class="col-6">
+        <p>NickName: </p>
+    </div>
+    <div class="col-6">
+        <div class="mb-3">
+            <img src="../../static/img/css_ava.jpg" alt="" style="max-width: 150px; max-height: 150px; margin-bottom: 20px; border: 4px solid #999999; padding: 1px;"><br>
+            <button type="reset" class="btn-dark" style="border: 0 solid #000000;">Save!</button>
+        </div>
+    </div>
+</div>
+{% endblock %}
+

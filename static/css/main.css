@@ -1,0 +1,46 @@
+
+main > .container {
+  padding: 60px 15px 0;
+}
+
+
+.question {
+  border: 1px solid grey;
+  margin-top: 20px;
+  border-radius: 5px;
+  padding: 20px;
+}
+
+
+.question-image {
+  max-width: 175px;
+  max-height: 175px;
+}
+
+.answer-image {
+  max-width: 100px;
+  max-height: 100px;
+}
+
+
+.question-title {
+  font-size: 20px;
+  font-family: "monospace";
+  font-weight: bold;
+}
+
+.question-text {
+  font-size: 15px;
+  font-family: "monospace";
+}
+
+.tags {
+  max-width: 50px;
+}
+
+.answer {
+  border: 3px black;
+  margin-top: 20px;
+  border-radius: 0;
+  padding: 20px;
+}

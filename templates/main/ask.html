@@ -1,0 +1,18 @@
+{% extends 'main/base.html' %}
+
+
+{% block title %}
+    {{ title }}
+{% endblock %}
+
+
+{% block content %}
+    <h1>You can ask here!</h1>
+    <form method="post">
+        {% csrf_token %}
+        {{ form.title }}<br>
+        {{ form.text }}<br>
+        <button type="reset" class="btn btn-success">Ask!</button>
+        <span>{{ error }}</span>
+    </form>
+{% endblock %}

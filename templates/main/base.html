@@ -1,0 +1,106 @@
+{% load static %}
+
+<!doctype html>
+<html lang="ru" class="h-100">
+<head>
+    <link href="{% static '/css/bootstrap.css' %}" rel="stylesheet">
+    <style>
+        .bd-placeholder-img {
+            font-size: 1.125rem;
+            text-anchor: middle;
+            -webkit-user-select: none;
+            -moz-user-select: none;
+            user-select: none;
+        }
+
+        @media (min-width: 768px) {
+            .bd-placeholder-img-lg {
+                font-size: 3.5rem;
+            }
+        }
+    </style>
+
+
+    <!-- Custom styles for this template -->
+    <title>{% block title %}{% endblock %}</title>
+</head>
+<body class="d-flex flex-column h-100">
+
+<header>
+    <!-- Fixed navbar -->
+    <nav class="navbar navbar-expand-md navbar-dark fixed-top bg-dark">
+        <div class="container-fluid">
+            <a class="navbar-brand" href="/">DOZER_FM</a>
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarCollapse"
+                    aria-controls="navbarCollapse" aria-expanded="false" aria-label="Toggle navigation">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse" id="navbarCollapse">
+                <ul class="navbar-nav me-auto mb-2 mb-md-0">
+                    <li class="nav-item">
+                        <a class="nav-link active" aria-current="page" href="/">Home</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link active" aria-current="page" href="/ask/">I got a question!</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link active" aria-current="page" href="/question/">I got a question!</a>
+                    </li>
+                </ul>
+                <form class="d-flex">
+                    <input class="form-control me-2" type="search" placeholder="Search" aria-label="Search">
+                    <button class="btn btn-outline-success" type="submit" style="margin-right: 20px; margin-left: 0">Search</button>
+                </form>
+                <div class="text-end">
+                    <button type="button" class="btn-success" style="margin-right: 0; margin-left: 10px">Login</button>
+                    <button type="button" class="btn-primary" style="margin-right: 10px; margin-left: 0">Sign-up</button>
+                </div>
+            </div>
+        </div>
+    </nav>
+</header>
+
+<!-- Begin page content -->
+<main class="flex-shrink-0">
+    <div class="container">
+        <div class="row">
+            <div class="col-8">
+                {% block content %}
+                {% endblock %}
+            </div>
+            <div class="col-4" style="position: fixed; right: 0">
+                <div class="tags" style="margin-left: 30px;">
+                    <h2>Popular Tags</h2>
+                    <span class="badge bg-secondary">Python</span>
+                    <span class="badge bg-warning">CSS</span>
+                    <span class="badge bg-success">Voloshin</span>
+                    <span class="badge bg-dark">Django</span>
+                    <span class="badge bg-danger">VK</span>
+                </div>
+                <br>
+                <h2 style="margin-left: 30px;">Best members</h2>
+                <ul class="list-group list-group-flush" style="margin-left: 30px; max-width: 200px;">
+                    <li class="list-group-item"><a href="">Danya Dozer</a></li>
+                    <li class="list-group-item"><a href="">A second item</a></li>
+                    <li class="list-group-item"><a href="">A third item</a></li>
+                    <li class="list-group-item"><a href="">A fourth item</a></li>
+                    <li class="list-group-item"><a href="">And a fifth one</a></li>
+                </ul>
+            </div>
+        </div>
+    </div>
+
+</main>
+
+<footer class="footer mt-auto py-3 bg-light">
+    <div class="container">
+        <span class="text-muted">Created by Dozer</span>
+    </div>
+</footer>
+
+
+<script src="../../static/js/bootstrap.bundle.min.js"></script>
+
+
+</body>
+</html>

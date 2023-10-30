@@ -1,0 +1,52 @@
+{% extends 'main/base.html' %}
+
+
+{% block title %}
+Question
+{% endblock %}
+
+
+{% block content %}
+<link href="../../static/css/main.css" rel="stylesheet">
+<div class="row">
+    <div class="col-3">
+        <img src="../../static/img/css_ava.jpg" alt="" style="max-width: 200px; max-height: 200px;">
+    </div>
+    <div class="col-9">
+        <div class="question-title"><a href="">First Question</a></div>
+        <div class="question-text">This mod adds a new class, the Fishing Class, where you use special
+            fishing rods (the Battle Rods) that can stick their bobber to the enemy and cause damage
+            over time for as long as it is stuck. Besides the titular Battle Rods, this mod also add
+            several new Accessories related to this class, as well as some new materials exclusive to
+            this mod, potions and Fishing Crates. It even adds a pet Crate, that allows you to fish much
+            more crates than usual while present.
+            How the Battle Rods work, the (nearly) complete list of items present in the mod (separated
+            into several category pages) and a guide giving you a way to complete a Battlerod-only run
+            are present in the Github wiki for this mod.
+        </div>
+        <br>
+        <h6>Tags: <a href="">Boba</a> <a href="">Biba</a></h6>
+    </div>
+    <hr style="border: none; height: 3px; background-color: black; margin: 10px 10px; opacity: 1;">
+    <div class="row" style="border: 2px solid #000000; margin-top: 10px; border-radius: 6px; padding: 20px; margin-left: 10px">
+        <div class="col-3">
+            <img src="../../static/img/css_ava.jpg" alt="" style="max-width: 150px; max-height: 150px;">
+            <div class="qty mt-5">
+                <input type="number" class="count" name="qty" value="1" style="max-width: 50px;">
+            </div>
+        </div>
+        <div class="col-9">
+            <div class="question-text">Вопрос говно- ответить нечего!
+            </div>
+            <br>
+            <div class="form-check">
+                <input class="form-check-input" type="checkbox" value="" id="flexCheckDefault">
+                <label class="form-check-label" for="flexCheckDefault">
+                    Correct!
+                </label>
+            </div>
+        </div>
+    </div>
+    <hr style="border: none; height: 3px; background-color: black; margin: 10px 10px; opacity: 1;">
+    </div>
+{% endblock %}
