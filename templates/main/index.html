@@ -1,4 +1,5 @@
-{% extends 'base.html' %}
+{% extends 'main/base.html' %}
+{% load static %}
 
 
 {% block title %}
@@ -7,21 +8,36 @@
 
 
 {% block content %}
-<h1>New Questions</h1>
-
-{% for el in questions %}
-<div class="row question">
+<h1>Questions</h1>
+{% for question in questions %}
+<div class="row question" style="margin-top: 10px;">
     <div class="col-3">
-        <img src="../../static/img/css_ava.jpg" alt="" class="question-image">
+        <img src="{% static '/img/css_ava.jpg' %}" alt="" class="question-image">
     </div>
     <div class="col-9">
-        <div class="question-title"><a href="">{{ el.title }}</a></div>
-        <div class="question-text">{{ el.text }}
+        <div class="question-title">
+            <a href="{% url 'question' question_id=question.id %}">{{ question.title }}</a>
+        </div>
+        <div class="question-text">
+            {{ question.content }}
         </div>
     </div>
+    <br>
 </div>
 {% endfor %}
-
+<nav aria-label="Page navigation example" style="margin-top: 30px">
+    <ul class="pagination justify-content-center">
+        <li class="page-item disabled">
+            <a class="page-link" href="#" tabindex="-1" aria-disabled="true">Previous</a>
+        </li>
+        <li class="page-item"><a class="page-link" href="#">1</a></li>
+        <li class="page-item"><a class="page-link" href="#">2</a></li>
+        <li class="page-item"><a class="page-link" href="#">3</a></li>
+        <li class="page-item">
+            <a class="page-link" href="#">Next</a>
+        </li>
+    </ul>
+</nav>
 {% endblock %}
 
 
