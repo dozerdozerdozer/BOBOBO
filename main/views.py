@@ -4,15 +4,6 @@ from .forms import QuestionForm
 from django.core.paginator import Paginator
 
 
-QUESTIONS = [
-        {
-            'id': i,
-            'title': f'Question {i}',
-            'text': f'Long lorem ipsum {i}'
-        } for i in range(30)
-    ]
-
-
 def paginate(objects, page, per_page = 10):
     paginator = Paginator(objects, per_page)
     return paginator.page(page)
@@ -20,11 +11,11 @@ def paginate(objects, page, per_page = 10):
 
 def index(request):
     page = int(request.GET.get('page', 1))
-    return render(request, 'main/index.html', {'title': 'Home Page', 'questions': paginate(QUESTIONS, page)})
+    return render(request, 'main/index.html', {'title': 'Home Page', 'questions': paginate(Question, page)})
 
 
 def question(request, question_id):
-    items = QUESTIONS[question_id]
+    items = Question[question_id]
     return render(request, 'main/question.html', {'questions': items})
 
 
