@@ -1,46 +1,72 @@
 
 main > .container {
-  padding: 60px 15px 0;
+    padding: 60px 15px 0;
 }
 
 
 .question {
-  border: 1px solid grey;
-  margin-top: 20px;
-  border-radius: 5px;
-  padding: 20px;
+    border: 1px solid grey;
+    margin-top: 20px;
+    border-radius: 5px;
+    padding: 20px;
 }
 
 
 .question-image {
-  max-width: 175px;
-  max-height: 175px;
+    max-width: 120px;
+    max-height: 120px;
 }
 
 .answer-image {
-  max-width: 100px;
-  max-height: 100px;
-}
-
-
-.question-title {
-  font-size: 20px;
-  font-family: "monospace";
-  font-weight: bold;
-}
-
-.question-text {
-  font-size: 15px;
-  font-family: "monospace";
+    max-width: 100px;
+    max-height: 100px;
 }
 
 .tags {
-  max-width: 50px;
+    margin-top: 20px;
 }
 
 .answer {
-  border: 3px black;
-  margin-top: 20px;
-  border-radius: 0;
-  padding: 20px;
+    border: 3px black;
+    margin-top: 20px;
+    border-radius: 0;
+    padding: 20px;
 }
+
+.title {
+    font-family: monospace;
+    font-size: 80px;
+}
+
+.text {
+    font-family: monospace;
+    font-size: 10px;
+}
+
+
+.btn-circle.btn-xl {
+    width: 70px;
+    height: 70px;
+    padding: 10px 16px;
+    border-radius: 35px;
+    font-size: 24px;
+    line-height: 1.33;
+}
+
+.btn-circle {
+    width: 30px;
+    height: 30px;
+    padding: 6px 0px;
+    border-radius: 15px;
+    text-align: center;
+    font-size: 12px;
+    line-height: 1.42857;
+}
+
+
+.link {
+    color: white;
+    background-color: transparent;
+    text-decoration: none;
+}
+

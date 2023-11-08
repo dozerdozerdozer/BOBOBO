@@ -10,9 +10,22 @@
     <h1>You can ask here!</h1>
     <form method="post">
         {% csrf_token %}
-        {{ form.title }}<br>
-        {{ form.text }}<br>
-        <button type="reset" class="btn btn-success">Ask!</button>
+        <div class="row" style="margin-top: 10px">
+            <div class="col-1" style="display: flex; align-items: center;">Title
+            </div>
+            <div class='col-11'>{{ form.title }}</div>
+        </div>
+        <div class="row" style="margin-top: 10px">
+            <div class="col-1" style="display: flex">Text</div>
+            <div class='col-11'>{{ form.text }}</div>
+        </div>
+        <div class="row" style="margin-top: 10px">
+            <div class="col-1" style="display: flex; align-items: center;">Tags</div>
+            <div class='col-11'>{{ form.tags }}</div>
+        </div>
+        <div style="margin-top: 10px">
+            <button type="button" class="btn btn-dark" style="margin-top: 10px">Ask</button>
+        </div>
         <span>{{ error }}</span>
     </form>
 {% endblock %}

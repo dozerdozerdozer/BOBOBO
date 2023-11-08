@@ -1,43 +1,88 @@
 {% extends 'main/base.html' %}
 {% load static %}
 
+<link href="{% static '/css/main.css' %}" rel="stylesheet">
+<link href="{% static '/css/bootstrap.css' %}" rel="stylesheet">
 
 {% block title %}
-{{ title }}
+    {{ title }}
 {% endblock %}
 
 
 {% block content %}
-<h1>Questions</h1>
-{% for question in questions %}
-<div class="row question" style="margin-top: 10px;">
-    <div class="col-3">
-        <img src="{% static '/img/css_ava.jpg' %}" alt="" class="question-image">
-    </div>
-    <div class="col-9">
-        <div class="question-title">
-            <a href="{% url 'question' question_id=question.id %}">{{ question.title }}</a>
+    <div class="row">
+        <div class="col-4">
+            <h3>New Questions</h3>
         </div>
-        <div class="question-text">
-            {{ question.content }}
+        <div class="col-4">
+            <h3><a href="{% url 'hot' %}">Hot Questions</a></h3>
         </div>
     </div>
-    <br>
-</div>
-{% endfor %}
-<nav aria-label="Page navigation example" style="margin-top: 30px">
-    <ul class="pagination justify-content-center">
-        <li class="page-item disabled">
-            <a class="page-link" href="#" tabindex="-1" aria-disabled="true">Previous</a>
-        </li>
-        <li class="page-item"><a class="page-link" href="#">1</a></li>
-        <li class="page-item"><a class="page-link" href="#">2</a></li>
-        <li class="page-item"><a class="page-link" href="#">3</a></li>
-        <li class="page-item">
-            <a class="page-link" href="#">Next</a>
-        </li>
-    </ul>
-</nav>
+    {% for question in questions %}
+        <div class="row question" style="margin-top: 10px;">
+            <div class="col-2">
+                <img src="{% static '/img/users_images/css_ava.jpg' %}" alt="" class="question-image">
+                <div class="row" style="margin-top: 10px">
+                    <div class="col-4">
+                        <button type="button" class="btn btn-light">-</button>
+                    </div>
+                    <div class="col-4" style="display: flex; align-items: center;">
+                        <h5>{{ question.amount_of_likes }}</h5>
+                    </div>
+                    <div class="col-4">
+                        <button type="button" class="btn btn-light">+</button>
+                    </div>
+                </div>
+            </div>
+            <div class="col-10">
+                <div style="font-family: monospace; font-size: 25px">
+                    <a href="{% url 'question paginator' question.id 1 %}">{{ question.title }}</a>
+                </div>
+                <div style="font-family: monospace; font-size: 20px;">
+                    {{ question.text }}
+                </div>
+                <div class="row" style="margin-top: 20px">
+                    <div class="col-3">
+                        <a href="{% url 'question paginator' question.id 1 %}">answers
+                            ( {{ question.amount_of_answers }} )</a>
+                    </div>
+                    <div class="col-4">
+                        Tags:
+                        {% for tag in question.tags.all %}
+                            <a href="{% url 'tag' tag.id%}">{{ tag }}</a>
+                        {% endfor %}
+                    </div>
+                </div>
+            </div>
+            <br>
+        </div>
+    {% endfor %}
+    <nav aria-label="Page navigation example" style="margin-top: 30px">
+        <ul class="pagination justify-content-center">
+            <li class="page-item {% if not questions.has_previous %} disabled {% endif %}">
+                <a class="page-link"
+                   href="{% if questions.has_previous %} {% url 'paginator' questions.previous_page_number %} {% else %} # {% endif %}"
+
+                   tabindex="-1" aria-disabled="true">
+                    Previous
+                </a>
+            </li>
+            {% for page in questions.paginator.page_range %}
+                <li class="page-item">
+                    <a class="page-link"
+                       href="{% url 'paginator' page %}">
+                        {{ page }}
+                    </a>
+                </li>
+            {% endfor %}
+            <li class="page-item {% if not questions.has_next %} disabled {% endif %}">
+                <a class="page-link"
+                   href="{% if questions.has_next %}   {% url 'paginator' questions.next_page_number %}   {% else %}   #   {% endif %}">
+                    Next
+                </a>
+            </li>
+        </ul>
+    </nav>
 {% endblock %}
 
 

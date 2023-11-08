@@ -20,7 +20,6 @@ Log In
 
 </div>
 <div class="row" style="margin-top: 10px; padding: 20px; margin-left: 10px">
-
     <div class="col-3">
         <p>Password </p>
     </div>
@@ -29,9 +28,9 @@ Log In
             <input type="Login" class="form-control" id="exampleInputPassword" aria-describedby="emailHelp"
                    placeholder="Password" style="border: 2px solid #000000; padding: 1px;">
         </div>
-        <button type="reset" class="btn-dark" style="border: 0 solid #000000;">Log in!</button>
+        <button type="reset" class="btn-dark" style="border: 0 solid #000000;">Log in!</button><br><br>
+        <a href="{% url 'registration' %}">create new account</a>
     </div>
-
 </div>
 {% endblock %}
 
