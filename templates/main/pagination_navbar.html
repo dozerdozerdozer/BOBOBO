@@ -1,0 +1,34 @@
+<nav aria-label="Page navigation example" style="margin-top: 30px">
+                    <ul class="pagination justify-content-center">
+                        <li class="page-item {% if not questions.has_previous %} disabled {% endif %}">
+                            <a class="page-link"
+                               href="{% if questions.has_previous %} ?page={{ questions.previous_page_number }} {% else %} # {% endif %}"
+
+                               tabindex="-1" aria-disabled="true">
+                                Previous
+                            </a>
+                        </li>
+                        {% for page in questions.paginator.page_range %}
+                            {% if questions.number == page %}
+                                <li class="page-item">
+                                    <a class="page-link" href="#">
+                                        {{ page }}
+                                    </a>
+                                </li>
+                            {% elif page >= questions.number|add:-2 and page <= questions.number|add:2 %}
+                                <li class="page-item">
+                                    <a class="page-link"
+                                       href="?page={{ page }}">
+                                        {{ page }}
+                                    </a>
+                                </li>
+                            {% endif %}
+                        {% endfor %}
+                        <li class="page-item {% if not questions.has_next %} disabled {% endif %}">
+                            <a class="page-link"
+                               href="{% if questions.has_next %}   ?page={{ questions.next_page_number }}   {% else %}   #   {% endif %}">
+                                Next
+                            </a>
+                        </li>
+                    </ul>
+                </nav>
