@@ -23,6 +23,7 @@ class Command(BaseCommand):
         Users.objects.all().delete()
 
         for i in range(ratio):
+            print('Tag ', i)
             tag_data = Tags(
                 tag_name=f'Tag №{i+1}',
                 count_of_questions=10)
@@ -31,6 +32,7 @@ class Command(BaseCommand):
         Tags.objects.bulk_create(tags_data_to_insert)
 
         for i in range(ratio):
+            print('User ', i)
             user_data = Users(
                 nickname=f'User_{i+1}',
                 password=f'User_{i+1}_password',
@@ -40,6 +42,7 @@ class Command(BaseCommand):
         Users.objects.bulk_create(users_data_to_insert)
 
         for i in range(ratio * 10):
+            print('Que ', i)
             question_data = Questions.objects.create(
                 title=f'How to be a num {i + 1}?',
                 text=f'Этот вопрос принадлежит пользователю User_{i // 10}, добавлен на сайт {i + 1}-м по очереди.',
@@ -63,6 +66,7 @@ class Command(BaseCommand):
                 author=Users.objects.get(username=f'User_{k+1}'),
                 likes_amount=random.randint(0, 1000))
             answers_data_to_insert.append(answer_data)
+            print('Answer ', i)
 
         Answers.objects.bulk_create(answers_data_to_insert)
 

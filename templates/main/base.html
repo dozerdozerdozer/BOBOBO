@@ -3,8 +3,9 @@
 <!doctype html>
 <html lang="ru" class="h-100">
 <head>
-    <link href="{% static '/css/main.css' %}" rel="stylesheet">
     <link href="{% static '/css/bootstrap.css' %}" rel="stylesheet">
+    <link href="{% static '/css/main.css' %}" rel="stylesheet">
+
 
     <title>{% block title %}{% endblock %}</title>
 </head>
@@ -56,13 +57,17 @@
             <div class="col-8" style="margin-top: 20px">
                 {% block content %}
                 {% endblock %}
+
             </div>
             <div class="col-4" style="position: fixed; right: 0; margin-top: 20px">
                 <div class="tags" style="margin-left: 30px; font-size: 26px">
                     <h2>Popular Tags</h2>
                     {% for tag in tags %}
-                        <span class="badge bg-dark"><a href="{% url 'tag' tag.id %}"
-                                                       style="color: white; background-color: transparent; text-decoration: none;">{{ tag.tag_name }}</a></span>
+                        <span class="badge bg-dark"><a style="color: white; background-color: transparent;
+                        text-decoration: none;" class="tag-link" href="{% url 'tag' tag.id %}">
+                            {{ tag.tag_name }}
+                        </a>
+                        </span>
                     {% endfor %}
                 </div>
                 <br>
@@ -75,7 +80,6 @@
             </div>
         </div>
     </div>
-
 </main>
 
 <footer class="footer mt-auto py-3 bg-light">

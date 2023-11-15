@@ -1,0 +1,14 @@
+{% extends 'main/base.html' %}
+
+
+{% block title %}500 Error{% endblock %}
+
+
+{% block content %}
+    <div>
+        <h1>Oh</h1>
+        <h2>We got some problems with the server(((</h2>
+        <h3>Come back later!</h3>
+        <a class="btn btn-dark btn-lg" href="{% url 'index' %}" role="button">Let's go to home page</a>
+    </div>
+{% endblock %}

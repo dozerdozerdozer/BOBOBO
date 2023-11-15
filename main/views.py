@@ -1,7 +1,5 @@
-from django.shortcuts import render, redirect
-from .models import Questions, Users, Tags, Answers
-from .forms import QuestionForm, AnswerForm
-from django.core.paginator import Paginator, PageNotAnInteger, EmptyPage
+from django.shortcuts import render
+from .services import *
 
 
 def base_context(request):
@@ -10,53 +8,28 @@ def base_context(request):
     return {'best_users': best_users, 'tags': tags}
 
 
-def paginate(objects, page=1, per_page=20):
-    # page - номер страницы, которую нужно отобразить (по умолчанию 1)
-    # per_page - кол-во элементов на странице *по умолчанию 10)
-
-    paginator = Paginator(objects, per_page)
-    try:
-        que = paginator.page(page)
-    except PageNotAnInteger:
-        que = paginator.page(1)
-    except EmptyPage:
-        que = paginator.page(paginator.num_pages)
-    return que
+def error_404_view(request, exception):
+    return render(request, 'main/404.html')
 
 
-def index(request, tag_id=None, page=1):
-    if tag_id:
-        try:
-            tag = Tags.objects.get(id=tag_id)
-        except:
-            tag = Tags.objects.get(id=1)
+def error_500_view(request):
+    return render(request, 'main/500.html')
 
-        questions = Questions.objects.filter(tags=tag).order_by('-id')
-    else:
-        questions = Questions.objects.all().order_by('-id')
-    context = {
-        'title': 'Home Page',
-        'questions': paginate(questions, page),
-    }
-    return render(request, 'main/index.html', context)
+
+def index(request):
+    return render(request, 'main/index.html', index_context(request))
+
+
+def tag(request, tag_id=20000):
+    return render(request, 'main/index.html', tag_context(request, tag_id))
 
 
 def hot(request):
-    context = {
-        'title': 'Hot',
-        'questions': Questions.objects.all().order_by('-amount_of_likes')
-    }
-    return render(request, 'main/index.html', context)
+    return render(request, 'main/index.html', hot_context(request))
 
 
-def question(request, question_id, page=1):
-    main_question = Questions.objects.get(id=question_id)
-    answer_context = Answers.objects.filter(question=question_id)
-    context = {
-        'question': main_question,
-        'answers': paginate(answer_context, page, 3),
-    }
-    return render(request, 'main/question.html', context)
+def question(request, question_id):
+    return render(request, 'main/question.html', question_context(request, question_id))
 
 
 def profile(request):
@@ -72,21 +45,10 @@ def registration(request):
 
 
 def ask(request):
-    error = ''
-    if request.method == "POST":
-        form = QuestionForm(request.POST)
-        if form.is_valid():
-            form.save()
-            return redirect('index')
-        else:
-            error = 'Wrong form!'
+    return render(request, 'main/ask.html')
 
-    form = QuestionForm()
-    context = {
-        'form': form,
-        'error': error,
-    }
-    return render(request, 'main/ask.html', context)
+
+
 
 
 

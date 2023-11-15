@@ -13,15 +13,21 @@
         <div class="row" style="margin-top: 10px">
             <div class="col-1" style="display: flex; align-items: center;">Title
             </div>
-            <div class='col-11'>{{ form.title }}</div>
+            <div class='col-11'>
+                <input type="text" class="form-control" id="exampleFormControlInput1" placeholder="Title of your question.">
+            </div>
         </div>
         <div class="row" style="margin-top: 10px">
             <div class="col-1" style="display: flex">Text</div>
-            <div class='col-11'>{{ form.text }}</div>
+            <div class='col-11'>
+                <textarea class="form-control" id="exampleFormControlTextarea1" rows="4"></textarea>
+            </div>
         </div>
         <div class="row" style="margin-top: 10px">
             <div class="col-1" style="display: flex; align-items: center;">Tags</div>
-            <div class='col-11'>{{ form.tags }}</div>
+            <div class='col-11'>
+                <input type="text" class="form-control" id="exampleFormControlInput1" placeholder="Tags of your question.">
+            </div>
         </div>
         <div style="margin-top: 10px">
             <button type="button" class="btn btn-dark" style="margin-top: 10px">Ask</button>

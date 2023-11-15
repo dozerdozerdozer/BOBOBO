@@ -2,35 +2,50 @@
 
 
 {% block title %}
-Log In
+    Log In
 {% endblock %}
 
 {% block content %}
-<h2>Log In</h2>
-<div class="row" style="margin-top: 10px; padding: 20px; margin-left: 10px">
-    <div class="col-3">
-        <p>Login </p>
-    </div>
-    <div class="col-3">
-        <div class="mb-3">
-            <input type="Login" class="form-control" id="exampleInputLogin" aria-describedby="emailHelp"
-                   placeholder="Login" style="border: 2px solid #000000; padding: 1px;">
+    <h2>Log In</h2>
+
+    <div class="row" style="margin-top: 10px; padding: 20px; margin-left: 10px">
+        <div class="col-3">
+            <p>Login </p>
+        </div>
+        <div class="col-4">
+            <div class="mb-4">
+                <input type="text" class="form-control is-invalid" id="validationServerUsername"
+                       aria-describedby="validationServer03Feedback" required>
+                <div id="validationServerUsernameFeedback" class="invalid-feedback">
+                    No user with such login found.
+                </div>
+                <div class="valid-feedback">
+                    Nice!
+                </div>
+            </div>
         </div>
     </div>
 
-</div>
-<div class="row" style="margin-top: 10px; padding: 20px; margin-left: 10px">
-    <div class="col-3">
-        <p>Password </p>
-    </div>
-    <div class="col-3">
-        <div class="mb-3">
-            <input type="Login" class="form-control" id="exampleInputPassword" aria-describedby="emailHelp"
-                   placeholder="Password" style="border: 2px solid #000000; padding: 1px;">
+
+    <div class="row" style="margin-top: 10px; padding: 20px; margin-left: 10px">
+        <div class="col-3">
+            <p>Password </p>
         </div>
-        <button type="reset" class="btn-dark" style="border: 0 solid #000000;">Log in!</button><br><br>
-        <a href="{% url 'registration' %}">create new account</a>
+        <div class="col-4">
+            <div class="mb-4">
+                <input type="text" class="form-control is-invalid" id="validationServerPassword"
+                       aria-describedby="validationPasswordFeedback" required>
+                <div id="validationServerPasswordFeedback" class="invalid-feedback">
+                    Login or password is wrong.
+                </div>
+                <div class="valid-feedback">
+                    Nice!
+                </div>
+            </div>
+            <button type="reset" class="btn-dark" style="border: 0 solid #000000;">Log in!</button><br><br>
+            <a href="{% url 'registration' %}">create new account</a>
+        </div>
     </div>
-</div>
+
 {% endblock %}
 

@@ -1,55 +1,79 @@
 {% extends 'main/base.html' %}
+{% load static %}
 
 
 {% block title %}
-Profile
+    Profile
 {% endblock %}
 
 {% block content %}
-<h2>Settings: *User name*</h2>
-<div class="row" style="margin-top: 10px; border-radius: 6px; padding: 20px; margin-left: 10px">
-    <div class="col-6">
-        <p>Login: </p>
-    </div>
-    <div class="col-6">
-        <div class="mb-3">
-            <input type="Login" class="form-control" id="exampleInputLogin" aria-describedby="emailHelp"
-                   placeholder="Login" style="border: 2px solid #000000; padding: 1px;">
+    <h2>Settings: *User name*</h2>
+    <div class="row" style="margin-top: 10px; padding: 20px; margin-left: 10px">
+        <div class="col-4">
+            <p>Login: </p>
+        </div>
+        <div class="col-6">
+            <div class="mb-3">
+                <div class="mb-4">
+                    <input type="text" class="form-control is-invalid" id="validationServerUsername"
+                           aria-describedby="validationServer03Feedback" required>
+                    <div id="validationServerUsernameFeedback" class="invalid-feedback">
+                        Wrong login.
+                    </div>
+                    <div class="valid-feedback">
+                        Nice!
+                    </div>
+                </div>
+            </div>
         </div>
     </div>
-</div>
-<div class="row" style="margin-top: 10px; border-radius: 6px; padding: 20px; margin-left: 10px">
-    <div class="col-6">
-        <p>Email: </p>
-    </div>
-    <div class="col-6">
-        <div class="mb-3">
-            <input type="email" class="form-control" id="exampleInputEmail" aria-describedby="emailHelp"
-                   placeholder="Email" style="border: 2px solid #000000; padding: 1px;">
+    <div class="row" style="margin-top: 10px; padding: 20px; margin-left: 10px">
+        <div class="col-4">
+            <p>Email: </p>
+        </div>
+        <div class="col-6">
+            <div class="mb-3">
+                <div class="mb-4">
+                    <input type="text" class="form-control is-invalid" id="validationServerEmail"
+                           aria-describedby="validationServer03Feedback" required>
+                    <div id="validationServerEmailFeedback" class="invalid-feedback">
+                        Wrong email.
+                    </div>
+                    <div class="valid-feedback">
+                        Nice!
+                    </div>
+                </div>
+            </div>
         </div>
     </div>
-</div>
-<div class="row" style="margin-top: 10px; border-radius: 6px; padding: 20px; margin-left: 10px">
-    <div class="col-6">
-        <p>NickName: </p>
-    </div>
-    <div class="col-6">
-        <div class="mb-3">
-            <input type="email" class="form-control" id="exampleInputNickName" aria-describedby="emailHelp"
-                   placeholder="NickName" style="border: 2px solid #000000; padding: 1px;">
+    <div class="row" style="margin-top: 10px; padding: 20px; margin-left: 10px">
+        <div class="col-4">
+            <p>NickName: </p>
+        </div>
+        <div class="col-6">
+            <div class="mb-3">
+                <input type="text" class="form-control is-invalid" id="validationServerUsername"
+                       aria-describedby="validationServer03Feedback" required>
+                <div id="validationServerUsernameFeedback" class="invalid-feedback">
+                    Wrong nickname.
+                </div>
+                <div class="valid-feedback">
+                    Nice!
+                </div>
+            </div>
         </div>
     </div>
-</div>
-<div class="row" style="margin-top: 10px; border-radius: 6px; padding: 20px; margin-left: 10px">
-    <div class="col-6">
-        <p>NickName: </p>
-    </div>
-    <div class="col-6">
-        <div class="mb-3">
-            <img src="../../static/img/users_images/css_ava.jpg" alt="" style="max-width: 150px; max-height: 150px; margin-bottom: 20px; border: 4px solid #999999; padding: 1px;"><br>
-            <button type="reset" class="btn-dark" style="border: 0 solid #000000;">Save!</button>
+    <div class="row" style="margin-top: 10px; padding: 20px; margin-left: 10px">
+        <div class="col-4">
+            <p>Profile Pic: </p>
+        </div>
+        <div class="col-6">
+            <div class="mb-3">
+                <img src="{% static '/img/users_images/21104.png' %}" alt=""
+                     style="max-width: 150px; max-height: 150px; margin-bottom: 20px; border: 4px solid #999999; padding: 1px;"><br>
+                <button type="reset" class="btn-dark" style="border: 0 solid #000000;">Save!</button>
+            </div>
         </div>
     </div>
-</div>
 {% endblock %}
 
