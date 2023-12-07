@@ -8,72 +8,67 @@
 
 {% block content %}
     <h2>Settings: *User name*</h2>
-    <div class="row" style="margin-top: 10px; padding: 20px; margin-left: 10px">
-        <div class="col-4">
-            <p>Login: </p>
-        </div>
-        <div class="col-6">
-            <div class="mb-3">
-                <div class="mb-4">
-                    <input type="text" class="form-control is-invalid" id="validationServerUsername"
-                           aria-describedby="validationServer03Feedback" required>
-                    <div id="validationServerUsernameFeedback" class="invalid-feedback">
-                        Wrong login.
-                    </div>
-                    <div class="valid-feedback">
-                        Nice!
-                    </div>
+    <form action="{% url 'profile' %}" method="post" enctype="multipart/form-data">
+        {% csrf_token %}
+        {% if form.errors %}
+            <div class="alert alert-warning alert-dismissible fade show" role="alert"
+                 style="margin-top: 50px;">
+                {{ form.errors }}
+            </div>
+        {% endif %}
+        <div class="row" style="margin-top: 10px; padding: 20px; margin-left: 10px">
+            <div class="col-4">
+                <p>Login: </p>
+            </div>
+            <div class="col-6">
+                <div class="mb-3">
+                    {{ form.username }}
                 </div>
             </div>
         </div>
-    </div>
-    <div class="row" style="margin-top: 10px; padding: 20px; margin-left: 10px">
-        <div class="col-4">
-            <p>Email: </p>
-        </div>
-        <div class="col-6">
-            <div class="mb-3">
-                <div class="mb-4">
-                    <input type="text" class="form-control is-invalid" id="validationServerEmail"
-                           aria-describedby="validationServer03Feedback" required>
-                    <div id="validationServerEmailFeedback" class="invalid-feedback">
-                        Wrong email.
-                    </div>
-                    <div class="valid-feedback">
-                        Nice!
+        <div class="row" style="margin-top: 10px; padding: 20px; margin-left: 10px">
+            <div class="col-4">
+                <p>Nickname: </p>
+            </div>
+            <div class="col-6">
+                <div class="mb-3">
+                    <div class="mb-4">
+                        {{ form.nickname }}
                     </div>
                 </div>
             </div>
         </div>
-    </div>
-    <div class="row" style="margin-top: 10px; padding: 20px; margin-left: 10px">
-        <div class="col-4">
-            <p>NickName: </p>
-        </div>
-        <div class="col-6">
-            <div class="mb-3">
-                <input type="text" class="form-control is-invalid" id="validationServerUsername"
-                       aria-describedby="validationServer03Feedback" required>
-                <div id="validationServerUsernameFeedback" class="invalid-feedback">
-                    Wrong nickname.
-                </div>
-                <div class="valid-feedback">
-                    Nice!
+        <div class="row" style="margin-top: 10px; padding: 20px; margin-left: 10px">
+            <div class="col-4">
+                <p>Email: </p>
+            </div>
+            <div class="col-6">
+                <div class="mb-3">
+                    <div class="mb-4">
+                        {{ form.email }}
+                    </div>
                 </div>
             </div>
         </div>
-    </div>
-    <div class="row" style="margin-top: 10px; padding: 20px; margin-left: 10px">
-        <div class="col-4">
-            <p>Profile Pic: </p>
-        </div>
-        <div class="col-6">
-            <div class="mb-3">
-                <img src="{% static '/img/users_images/21104.png' %}" alt=""
-                     style="max-width: 150px; max-height: 150px; margin-bottom: 20px; border: 4px solid #999999; padding: 1px;"><br>
-                <button type="reset" class="btn-dark" style="border: 0 solid #000000;">Save!</button>
+        <div class="row" style="margin-top: 10px; padding: 20px; margin-left: 10px">
+            <div class="col-4">
+                <p>Profile Pic: </p>
+            </div>
+            <div class="col-6">
+                <div class="mb-3">
+                    <div style="width: 200px">
+                        <img src="{{ request.user.image.url }}" alt="Profile Avatar" class="w-100" />
+                    </div>
+                    <br>
+                    {{ form.image }}
+                    <br><br>
+                    <a class="nav-link active" aria-current="page" href="{% url 'change_password' %}">Change
+                        password.</a>
+                    <input type="submit" class="btn-dark" style="border: 0 solid #000000;" value="Save!">
+                </div>
             </div>
         </div>
-    </div>
+    </form>
 {% endblock %}
+
 

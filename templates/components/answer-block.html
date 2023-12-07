@@ -1,10 +1,35 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <title>Title</title>
-</head>
-<body>
+{% load static %}
 
-</body>
-</html>
+
+<div class="row"
+     style="border: 2px solid #000000; margin-top: 10px; border-radius: 6px; padding: 20px; margin-left: 10px">
+    <div class="col-2">
+        <img src="{% static '/img/users_images/../../main/uploads/21104.png' %}" alt=""
+             style="max-width: 120px; max-height: 120px;">
+        <div class="row" style="margin-top: 10px">
+            <div class="col-4">
+                <button type="button" class="btn btn-light">-</button>
+            </div>
+            <div class="col-4" style="display: flex; align-items: center;">
+                <h5>{{ question.amount_of_likes }}</h5>
+            </div>
+            <div class="col-4">
+                <button type="button" class="btn btn-light">+</button>
+            </div>
+        </div>
+    </div>
+    <div class="col-9">
+        <div class="question-text">{{ answer.answer_text }}</div>
+        <br>
+        <div class="form-check">
+            {% if answer.truly %}
+                <input class="form-check-input" type="checkbox" value="1" id="flexCheckDefault" checked>
+            {% else %}
+                <input class="form-check-input" type="checkbox" value="1" id="flexCheckDefault">
+            {% endif %}
+            <label class="form-check-label" for="flexCheckDefault">
+                Correct!
+            </label>
+        </div>
+    </div>
+</div>

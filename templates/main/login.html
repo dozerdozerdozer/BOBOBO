@@ -6,46 +6,49 @@
 {% endblock %}
 
 {% block content %}
-    <h2>Log In</h2>
 
-    <div class="row" style="margin-top: 10px; padding: 20px; margin-left: 10px">
-        <div class="col-3">
-            <p>Login </p>
-        </div>
-        <div class="col-4">
-            <div class="mb-4">
-                <input type="text" class="form-control is-invalid" id="validationServerUsername"
-                       aria-describedby="validationServer03Feedback" required>
-                <div id="validationServerUsernameFeedback" class="invalid-feedback">
-                    No user with such login found.
+    <form action="{% url 'login' %}" method="post">
+        {% csrf_token %}
+
+        <h2>Log In</h2>
+        <div class="row" style="margin-top: 10px; padding: 20px; margin-left: 10px">
+            {% if messages or form.non_field_errors %}
+                <div class="alert alert-warning alert-dismissible fade show" role="alert"
+                     style="margin-top: 50px;">
+                    {% if messages %}
+                        {% for message in messages %}
+                            {{ message }}
+                        {% endfor %}
+                    {% else %}
+                        {{ form.non_field_errors }}
+                    {% endif %}
                 </div>
-                <div class="valid-feedback">
-                    Nice!
+            {% endif %}
+        </div>
+        <div class="row" style="margin-top: 10px; padding: 20px; margin-left: 10px">
+            <div class="col-3">
+                <p>Login </p>
+            </div>
+            <div class="col-4">
+                <div class="mb-4">
+                    {{ form.username }}
                 </div>
             </div>
         </div>
-    </div>
 
-
-    <div class="row" style="margin-top: 10px; padding: 20px; margin-left: 10px">
-        <div class="col-3">
-            <p>Password </p>
-        </div>
-        <div class="col-4">
-            <div class="mb-4">
-                <input type="text" class="form-control is-invalid" id="validationServerPassword"
-                       aria-describedby="validationPasswordFeedback" required>
-                <div id="validationServerPasswordFeedback" class="invalid-feedback">
-                    Login or password is wrong.
-                </div>
-                <div class="valid-feedback">
-                    Nice!
-                </div>
+        <div class="row" style="margin-top: 10px; padding: 20px; margin-left: 10px">
+            <div class="col-3">
+                <p>Password </p>
             </div>
-            <button type="reset" class="btn-dark" style="border: 0 solid #000000;">Log in!</button><br><br>
-            <a href="{% url 'registration' %}">create new account</a>
+            <div class="col-4">
+                <div class="mb-4">
+                    {{ form.password }}
+                </div>
+                <input type="submit" class="btn-dark" style="border: none;" value="Sign In">
+                <br><br>
+                <a href="{% url 'registration' %}">create new account</a>
+            </div>
         </div>
-    </div>
-
+    </form>
 {% endblock %}
 

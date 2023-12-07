@@ -1,10 +1,12 @@
 
 from django.contrib import admin
-from .models import Questions, Answers, Tags, Users
+from .models import *
 
 
 admin.site.register(Questions)
 admin.site.register(Answers)
-admin.site.register(Users)
+admin.site.register(User)
 admin.site.register(Tags)
+admin.site.register(QuestionLikes)
+admin.site.register(AnswerLikes)
 

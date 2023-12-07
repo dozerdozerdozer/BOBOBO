@@ -1,5 +1,5 @@
 from django.core.management.base import BaseCommand
-from main.models import Questions, Answers, Users, Tags
+from main.models import Questions, Answers, User, Tags
 import random
 
 
@@ -20,7 +20,7 @@ class Command(BaseCommand):
         Answers.objects.all().delete()
         Questions.objects.all().delete()
         Tags.objects.all().delete()
-        Users.objects.all().delete()
+        User.objects.all().delete()
 
         for i in range(ratio):
             print('Tag ', i)
@@ -33,20 +33,20 @@ class Command(BaseCommand):
 
         for i in range(ratio):
             print('User ', i)
-            user_data = Users(
+            user_data = User(
                 nickname=f'User_{i+1}',
                 password=f'User_{i+1}_password',
                 username=f'User_{i+1}')
             users_data_to_insert.append(user_data)
 
-        Users.objects.bulk_create(users_data_to_insert)
+        User.objects.bulk_create(users_data_to_insert)
 
         for i in range(ratio * 10):
             print('Que ', i)
             question_data = Questions.objects.create(
                 title=f'How to be a num {i + 1}?',
                 text=f'Этот вопрос принадлежит пользователю User_{i // 10}, добавлен на сайт {i + 1}-м по очереди.',
-                author=Users.objects.get(username=f'User_{(i // 10) + 1}'),
+                author=User.objects.get(username=f'User_{(i // 10) + 1}'),
                 amount_of_likes=random.randint(0, 1000),
                 amount_of_answers=10)
 
@@ -63,8 +63,8 @@ class Command(BaseCommand):
             answer_data = Answers(
                 question=Questions.objects.get(title=f'How to be a num {(i // 10) + 1}?'),
                 answer_text=f'Этот ответ принадлежит пользователю User_{k+1}',
-                author=Users.objects.get(username=f'User_{k+1}'),
-                likes_amount=random.randint(0, 1000))
+                author=User.objects.get(username=f'User_{k+1}'),
+                amount_of_likes=random.randint(0, 1000))
             answers_data_to_insert.append(answer_data)
             print('Answer ', i)
 

@@ -24,7 +24,7 @@ BASE_DIR = Path(__file__).resolve().parent.parent
 SECRET_KEY = 'django-insecure-20gcqky5qc5i^hfjpz28j2d0=)s6hiinf6+s@kyr6equ72*s0x'
 
 # SECURITY WARNING: don't run with debug turned on in production!
-DEBUG = False
+DEBUG = True
 
 ALLOWED_HOSTS = [
     '*'
@@ -83,11 +83,11 @@ WSGI_APPLICATION = 'ASKDOZER.wsgi.application'
 DATABASES = {
     'default': {
         'ENGINE': 'django.db.backends.postgresql',
-        'NAME': 'ask',       # Имя вашей базы данных
-        'USER': 'postgres',   # Имя пользователя PostgreSQL
-        'PASSWORD': '1111',   # Пароль пользователя PostgreSQL
-        'HOST': 'localhost',        # Хост, на котором работает PostgreSQL (обычно localhost)
-        'PORT': '5432',                 # Порт PostgreSQL (по умолчанию 5432)
+        'NAME': 'myaskfm',
+        'USER': 'postgres',
+        'PASSWORD': '1111',
+        'HOST': 'localhost',
+        'PORT': '5432',
     }
 }
 
@@ -135,4 +135,8 @@ STATICFILES_DIRS = [os.path.join(BASE_DIR, "static/")]
 
 DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
 
+AUTH_USER_MODEL = 'main.User'
+
+MEDIA_ROOT = BASE_DIR / 'uploads'
+MEDIA_URL = '/uploads/'
 

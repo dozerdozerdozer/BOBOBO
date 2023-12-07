@@ -18,46 +18,13 @@
             <h3><a href="{% url 'hot' %}">Hot Questions</a></h3>
         </div>
     </div>
+
     {% for question in questions %}
-        <div class="row question" style="margin-top: 10px;">
-            <div class="col-2">
-                <img src="{% static '/img/users_images/21104.png' %}" alt="" class="question-image">
-                <div class="row" style="margin-top: 10px">
-                    <div class="col-4">
-                        <button type="button" class="btn btn-light" style="font-size: 20px">⇓</button>
-                    </div>
-                    <div class="col-4" style="display: flex; align-items: center;">
-                        <h5>{{ question.amount_of_likes }}</h5>
-                    </div>
-                    <div class="col-4">
-                        <button type="button" class="btn btn-light" style="font-size: 20px">⇑</button>
-                    </div>
-                </div>
-            </div>
-            <div class="col-10">
-                <div style="font-family: monospace; font-size: 25px">
-                    <a href="{% url 'question' question.id %}">{{ question.title }}</a>
-                </div>
-                <div style="font-family: monospace; font-size: 20px;">
-                    {{ question.text }}
-                </div>
-                <div class="row" style="margin-top: 20px">
-                    <div class="col-3">
-                        <a href="{% url 'question' question.id %}">answers
-                            ( {{ question.amount_of_answers }} )</a>
-                    </div>
-                    <div class="col-8">
-                        Tags:
-                        {% for tag in question.tags.all %}
-                            <a href="{% url 'tag' tag.id %}">{{ tag }}</a>
-                        {% endfor %}
-                    </div>
-                </div>
-            </div>
-            <br>
-        </div>
+        {% include 'components/question-block.html' with question=question %}
     {% endfor %}
-    {% include 'main/pagination_navbar.html' with items=questions %}
+    {% include 'components/pagination_navbar.html' with items=questions %}
+
 {% endblock %}
+
 
 

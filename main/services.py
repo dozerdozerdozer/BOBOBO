@@ -1,8 +1,9 @@
 from .models import *
-from .views import *
 from django.core.exceptions import ObjectDoesNotExist
 from django.shortcuts import get_object_or_404
 from django.core.paginator import Paginator, PageNotAnInteger, EmptyPage
+from .forms import *
+from django.contrib import auth
 
 
 def paginate(request, objects, per_page=3):
@@ -23,7 +24,7 @@ def paginate(request, objects, per_page=3):
 def index_context(request):
     context = {
         'title': 'Home Page',
-        'questions': paginate(request, Questions.objects.all().order_by('-id'), 20),
+        'questions': paginate(request, Questions.objects.all_best_questions(), 20),
     }
     return context
 
@@ -42,7 +43,7 @@ def tag_context(request, tag_id):
         teg = Tags.objects.last()
     context = {
         'title': f'{teg}',
-        'questions': paginate(request, Questions.objects.filter(tags=teg).order_by('-id'))
+        'questions': paginate(request, Questions.objects.this_tag_questions(tag_id).order_by('-id'))
     }
     return context
 
@@ -50,14 +51,9 @@ def tag_context(request, tag_id):
 def hot_context(request):
     context = {
         'title': 'Hot',
-        'questions': paginate(request, Questions.objects.all().order_by('-amount_of_likes'))
+        'questions': paginate(request, Questions.objects.hot_questions())
     }
     return context
 
 
-def question_context(request, question_id):
-    context = {
-        'question': Questions.objects.get(id=question_id),
-        'answers': paginate(request, Answers.objects.filter(question=question_id), 3),
-    }
-    return context
+

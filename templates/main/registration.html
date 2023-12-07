@@ -6,103 +6,73 @@
 {% endblock %}
 
 {% block content %}
-    <h2>Log In</h2>
-
-    <div class="row" style="margin-top: 10px; padding: 20px; margin-left: 10px">
-        <div class="col-3">
-            <p>Login </p>
-        </div>
-        <div class="col-3">
-            <div class="mb-3">
-                <input type="text" class="form-control is-invalid" id="validationServerUsername"
-                       aria-describedby="validationServer03Feedback" required>
-                <div id="validationServerUsernameFeedback" class="invalid-feedback">
-                    Wrong login.
-                </div>
-                <div class="valid-feedback">
-                    Nice!
-                </div>
+    <form action="{% url 'registration' %}" method="post">
+        {% csrf_token %}
+        <h2>Registration</h2>
+        {% if form.errors %}
+            <div class="alert alert-warning alert-dismissible fade show" role="alert"
+                 style="margin-top: 50px;">
+                {{ form.errors }}
             </div>
-        </div>
-    </div>
-    <div class="row" style="margin-top: 10px; padding: 20px; margin-left: 10px">
-        <div class="col-3">
-            <p>Email</p>
-        </div>
-        <div class="col-3">
-            <div class="mb-3">
+        {% endif %}
+        <div class="row" style="margin-top: 10px; padding: 20px; margin-left: 10px">
+            <div class="col-3">
+                <p>Login </p>
+            </div>
+            <div class="col-3">
                 <div class="mb-3">
-                    <input type="text" class="form-control is-invalid" id="validationServerEmail"
-                           aria-describedby="validationServerEmailFeedback" required>
-                    <div id="validationServerEmailFeedback" class="invalid-feedback">
-                        Wrong email.
-                    </div>
-                    <div class="valid-feedback">
-                        Nice!
-                    </div>
+                    {{ form.username }}
                 </div>
             </div>
         </div>
-    </div>
-    <div class="row" style="margin-top: 10px; padding: 20px; margin-left: 10px">
-        <div class="col-3">
-            <p>NickName</p>
-        </div>
-        <div class="col-3">
-            <div class="mb-3">
-                <input type="text" class="form-control is-invalid" id="validationServerUsername"
-                       aria-describedby="validationServerUsernameFeedback" required>
-                <div id="validationServerUsernameFeedback" class="invalid-feedback">
-                    Wrong Nickname.
-                </div>
-                <div class="valid-feedback">
-                    Nice!
-                </div>
+        <div class="row" style="margin-top: 10px; padding: 20px; margin-left: 10px">
+            <div class="col-3">
+                <p>Email</p>
             </div>
-
-        </div>
-    </div>
-    <div class="row" style="margin-top: 10px; padding: 20px; margin-left: 10px">
-        <div class="col-3">
-            <p>Password</p>
-        </div>
-        <div class="col-3">
-            <div class="mb-3">
-                <input type="text" class="form-control is-invalid" id="validationServerPassword"
-                       aria-describedby="validationServerPasswordFeedback" required>
-                <div id="validationServerPasswordFeedback" class="invalid-feedback">
-                    Wrong password.
-                </div>
-                <div class="valid-feedback">
-                    Nice!
-                </div>
-            </div>
-
-        </div>
-    </div>
-
-    <div class="row" style="margin-top: 10px; padding: 20px; margin-left: 10px">
-        <div class="col-3">
-            <p>Repeat password</p>
-        </div>
-        <div class="col-3">
-            <div class="mb-3">
+            <div class="col-3">
                 <div class="mb-3">
-                    <input type="text" class="form-control is-invalid" id="validationServerPassword"
-                           aria-describedby="validationServerPasswordFeedback" required>
-                    <div id="validationServerPasswordFeedback" class="invalid-feedback">
-                        Passwords doesn't match.
-                    </div>
-                    <div class="valid-feedback">
-                        Nice!
+                    <div class="mb-3">
+                        {{ form.email }}
                     </div>
                 </div>
             </div>
-            <button type="reset" class="btn-dark" style="border: 0 solid #000000;">Log in!</button>
-            <br><br>
-            <a href="{% url 'login' %}">already have an account</a>
         </div>
-    </div>
+        <div class="row" style="margin-top: 10px; padding: 20px; margin-left: 10px">
+            <div class="col-3">
+                <p>NickName</p>
+            </div>
+            <div class="col-3">
+                <div class="mb-3">
+                    {{ form.nickname }}
+                </div>
+            </div>
+        </div>
+        <div class="row" style="margin-top: 10px; padding: 20px; margin-left: 10px">
+            <div class="col-3">
+                <p>Password</p>
+            </div>
+            <div class="col-3">
+                <div class="mb-3">
+                    {{ form.password1 }}
+                </div>
 
+            </div>
+        </div>
+        <div class="row" style="margin-top: 10px; padding: 20px; margin-left: 10px">
+            <div class="col-3">
+                <p>Repeat password</p>
+            </div>
+            <div class="col-3">
+                <div class="mb-3">
+                    <div class="mb-3">
+                        {{ form.password2 }}
+                    </div>
+                </div>
+                <input type="submit" class="btn-dark" style="border: 0 solid #000000;" value="Sign up!">
+                <br><br>
+                <a href="{% url 'login' %}">already have an account</a>
+            </div>
+        </div>
+    </form>
 {% endblock %}
 

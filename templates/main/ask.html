@@ -10,28 +10,50 @@
     <h1>You can ask here!</h1>
     <form method="post">
         {% csrf_token %}
-        <div class="row" style="margin-top: 10px">
-            <div class="col-1" style="display: flex; align-items: center;">Title
+        <div class="row" style="margin-top: 10px; padding: 20px; margin-left: 10px">
+            {% if form.errors %}
+                <div class="alert alert-danger alert-dismissible fade show" role="alert">
+                    {% for field, errors in form.errors.items %}
+                        {{ field }}:
+                        {% for error in errors %}
+                            {{ error }}
+                        {% endfor %}
+                    {% endfor %}
+                </div>
+            {% endif %}
+        </div>
+        <div class="row" style="margin-top: 10px; padding: 20px; margin-left: 10px">
+            <div class="col-3">
+                <p>Title</p>
             </div>
-            <div class='col-11'>
-                <input type="text" class="form-control" id="exampleFormControlInput1" placeholder="Title of your question.">
+            <div class="col-8">
+                <div class="mb-4">
+                    {{ form.title }}
+                </div>
             </div>
         </div>
-        <div class="row" style="margin-top: 10px">
-            <div class="col-1" style="display: flex">Text</div>
-            <div class='col-11'>
-                <textarea class="form-control" id="exampleFormControlTextarea1" rows="4"></textarea>
+        <div class="row" style="margin-top: 10px; padding: 20px; margin-left: 10px">
+            <div class="col-3">
+                <p>Text</p>
+            </div>
+            <div class="col-8">
+                <div class="mb-4">
+                    {{ form.text }}
+                </div>
             </div>
         </div>
-        <div class="row" style="margin-top: 10px">
-            <div class="col-1" style="display: flex; align-items: center;">Tags</div>
-            <div class='col-11'>
-                <input type="text" class="form-control" id="exampleFormControlInput1" placeholder="Tags of your question.">
+        <div class="row" style="margin-top: 10px; padding: 20px; margin-left: 10px">
+            <div class="col-3">
+                <p>Tags </p>
+            </div>
+            <div class="col-8">
+                <div class="mb-4">
+                    {{ form.tags }}
+                </div>
             </div>
         </div>
         <div style="margin-top: 10px">
-            <button type="button" class="btn btn-dark" style="margin-top: 10px">Ask</button>
+            <input type="submit" class="btn btn-dark" style="margin-top: 10px" value="Ask">
         </div>
-        <span>{{ error }}</span>
     </form>
 {% endblock %}
